@@ -1,0 +1,48 @@
+﻿<Controls:MetroWindow x:Class="UnparkCPU.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" Title="iTF PROMETHEUS: CPU PARKING" Height="350" Width="525">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Red.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Label VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">REGISTRY VALUES:</Label>
+                <Border Margin="121,10,10,109" BorderBrush="AliceBlue" BorderThickness="2">
+                    <ListView Name="lstRegData" Margin="0,0,0,-2" SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="CPU Number" Width="100" DisplayMemberBinding="{Binding Number}"/>
+                            <GridViewColumn Header="Value Name" Width="100" DisplayMemberBinding="{Binding ValueName}"/>
+                            <GridViewColumn Header="Value" Width="100" DisplayMemberBinding="{Binding Value}"/>
+                            <GridViewColumn Header="Parked?" Width="100" DisplayMemberBinding="{Binding IsParked}"/>
+                        </GridView>
+                        </ListView.View>
+                </ListView>
+                </Border>
+            <Image Source="Images/avatar.jpg" Margin="10,77,412,128"></Image>
+            <Button x:Name="btnCpuStatus" Margin="121,195,282,59" Click="btnCpuStatus_Click">Check Status</Button>
+                <Button x:Name="btnParkAll" Margin="408,195,10,59" Click="btnParkAll_Click">Park All</Button>
+                <Button x:Name="btnUnparkAll" Margin="253,195,128,59" Click="btnUnparkAll_Click">Unpark All</Button>
+            </Grid>
+        
+        <StatusBar Grid.Row="1">
+            <StatusBarItem VerticalAlignment="Center" HorizontalContentAlignment="Right">
+                <Label Name="lblStatusText" Foreground="Black">Ready</Label>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Controls:MetroWindow>
